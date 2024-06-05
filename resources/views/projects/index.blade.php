@@ -8,8 +8,8 @@
             <p>{{$project->title}}</p>
             <p>{{$project->slug}}</p>
             <p>{{$project->content}}</p>
-            @dump($project->project)
-            {{-- <p>{{$project->project ? $project->project->name : 'Nessun tipo'}}</p> --}}
+            @dump($project->type)
+            <p>{{$project->project ? $project->type->attributes['name'] : 'Nessun tipo'}}</p>
             <a href="{{$project->link}}">{{$project->link}}</a>
         </div>
     @endforeach

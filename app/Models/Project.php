@@ -11,9 +11,9 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title', 'content', 'link', 
+        'title', 'content', 'link', 'slug', 'type_id'
     ];
     public function type() {
-        return $this->hasMany(Type::class);
+        return $this->belongsTo(Type::class);
     }
 }
