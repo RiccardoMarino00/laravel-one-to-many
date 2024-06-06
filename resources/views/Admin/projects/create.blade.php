@@ -20,6 +20,17 @@
                 <input class="form-control" type="text" name="link" id="link" placeholder="Inserisci un prezzo...">
             </div>
 
+            <div class="container-input input-group mb-3">
+                <select name="type_id" id="">
+                    <option value="">Seleziona categiora</option>
+                    @foreach ($types as $type)
+                    <option @selected($type->id == old('type_id')) value="{{$type->id}}">{{$type->name}}</option>
+                        
+                    @endforeach
+                </select>
+            </div>
+
+
             {{-- <div class="container-input input-group mb-3">
                 <label for="slug" class="input-group-text" >slug momentaneo</label>
                 <input class="form-control " type="text" name="slug" id="slug" placeholder="..." >

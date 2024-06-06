@@ -18,6 +18,8 @@
         <label class="input-group-text" for="price" >Link</label>
         <input class="form-control" type="text" name="link" id="link" value="{{$project->link}}">
     </div>
+    <a  href="{{route('admin.project.index')}}">Back</a>
+
 
     <button class="btn btn-success">Modifica</button>
 </form>

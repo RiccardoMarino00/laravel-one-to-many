@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Type;
+
 
 
 class ProjectController extends Controller
@@ -26,7 +28,10 @@ class ProjectController extends Controller
     public function create()
     {
         //
-        return view('admin.projects.create');
+
+        $types = Type::orderBy('name', 'asc')->get();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
