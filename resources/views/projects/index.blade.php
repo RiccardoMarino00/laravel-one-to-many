@@ -9,7 +9,7 @@
     </div>
 
     @foreach ($projects as $project)
-        <div class="m-2 border p-2 d-flex">
+        <div class="m-2 border p-2 d-flex text-center">
             <div class="col-6">
                 <p>{{$project->title}}</p>
                 <p>{{$project->slug}}</p>
@@ -20,7 +20,11 @@
             </div>
             <div class="col-6 right-align"> 
                  <a href="{{route('admin.project.edit', $project)}}">Edit</a>
-                 <a href="{{route('admin.project.destroy', $project)}}">Delete</a>
+                 <form action="{{ route('admin.project.destroy', $project) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button>Delete</button>
+                </form>
             </div>
         </div>
     @endforeach
