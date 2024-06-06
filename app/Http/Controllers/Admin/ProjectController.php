@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
@@ -34,8 +36,10 @@ class ProjectController extends Controller
     {
         //
         $form_data = $request->all();
+        $slug = Str::slug($form_data['title']);
+        $form_data['slug'] = $slug;
         $new_project = Project::create($form_data);
-        return to_route('projects.show', $new_project);
+        return to_route('admin.project.show', $new_project);
     }
 
     /**
@@ -44,7 +48,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view('projects.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -53,7 +57,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
-        return view('projects.edit', compact('project'));
+        return view('admin.projects.edit', compact('project'));
 
     }
 
@@ -65,7 +69,7 @@ class ProjectController extends Controller
         //
         $form_data = $request->all();
         $project->update($form_data);
-        return to_route('projects.show', $project);
+        return to_route('admin.project.show', $project);
     }
 
     /**
@@ -75,6 +79,6 @@ class ProjectController extends Controller
     {
         //
         $project->delete();
-        return to_route('projects.index');
+        return to_route('admin.projects.index');
     }
 }
