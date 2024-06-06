@@ -11,7 +11,7 @@
             </svg>
         </div>
         <h1 class="display-5 fw-bold">
-            <a href="{{route('admin.project.index')}}">My Project</a> <i class="bi bi-box"></i>
+            <a href="{{route('admin.projects.index')}}">My Project</a> <i class="bi bi-box"></i>
         </h1>
 
         {{-- <p class="col-md-8 fs-4">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController as PublicProjectController;
 use App\Http\Controllers\Admin\ProjectController;
 
 /*
@@ -19,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('projects', PublicProjectController::class)->only(['index', 'show']);
 
 
 Route::middleware(['auth', 'verified'])
@@ -32,7 +34,7 @@ Route::middleware(['auth', 'verified'])
 
     //Registro tutte le altre rotte protette
     //CRUD posts
-    Route::resource('project', ProjectController::class);
+    Route::resource('projects', ProjectController::class);
 
   });
 

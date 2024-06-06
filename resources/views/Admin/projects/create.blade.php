@@ -3,7 +3,7 @@
 @section('content')
     <div class="text-center">
         <p>Rotta create</p>
-        <form action="{{route('admin.project.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST">
             @csrf
             <div class="contenitore-input input-group mb-3">
                 <label for="title" class="input-group-text" >Title</label>

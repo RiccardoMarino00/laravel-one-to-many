@@ -69,8 +69,8 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                                <a class="dropdown-item" href="{{route('admin.project.index')}}">My Project</a>
-                                <a class="dropdown-item" href="{{route('admin.project.create')}}">Create new project</a>
+                                <a class="dropdown-item" href="{{route('admin.projects.index')}}">My Project</a>
+                                <a class="dropdown-item" href="{{route('admin.projects.create')}}">Create new project</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

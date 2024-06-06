@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{route('admin.project.update', $project)}}" method="POST">
+<form action="{{route('admin.projects.update', $project)}}" method="POST">
     @csrf
     @method('PUT')
     <div class="contenitore-input input-group mb-3">
@@ -18,7 +18,7 @@
         <label class="input-group-text" for="price" >Link</label>
         <input class="form-control" type="text" name="link" id="link" value="{{$project->link}}">
     </div>
-    <a  href="{{route('admin.project.index')}}">Back</a>
+    <a  href="{{route('admin.projects.index')}}">Back</a>
 
 
     <button class="btn btn-success">Modifica</button>

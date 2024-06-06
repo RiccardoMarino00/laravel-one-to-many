@@ -5,7 +5,7 @@
 <section>
 
     <div class="container">
-        <a href="{{route('admin.project.create')}}">Create new project</a>
+        <a href="{{route('admin.projects.create')}}">Create new project</a>
     </div>
 
     @foreach ($projects as $project)
@@ -19,8 +19,8 @@
                 <a href="{{$project->link}}">{{$project->link}}</a>
             </div>
             <div class="col-6 right-align"> 
-                 <a href="{{route('admin.project.edit', $project)}}">Edit</a>
-                 <form action="{{ route('admin.project.destroy', $project) }}" method="POST">
+                 <a href="{{route('admin.projects.edit', $project)}}">Edit</a>
+                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                     @method('DELETE')
                     @csrf
                     <button>Delete</button>

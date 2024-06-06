@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Type;
+use Illuminate\Validation\Rule;
 
 
 
@@ -18,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         //
-        $projects = Project::all();
+        $projects = Project::with(['type', 'type.project'])->get();
         return view('projects.index', compact('projects'));
     }
 
@@ -37,14 +40,25 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         //
-        $form_data = $request->all();
-        $slug = Str::slug($form_data['title']);
+        $form_data = $request->validated();
+        $base_slug = Str::slug($form_data['title']);
+        $slug = $base_slug;
+        $n = 0;
+        do {
+            $find = Project::where('slug', $slug)->first();
+            if ($find !== null) {
+                $n++;
+                $slug = $base_slug . '-' . $n;
+            }
+        } while ($find !== null);
+
         $form_data['slug'] = $slug;
+
         $new_project = Project::create($form_data);
-        return to_route('admin.project.show', $new_project);
+        return to_route('admin.projects.show', $new_project);
     }
 
     /**
@@ -53,6 +67,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
+        $project->load(['type', 'type.projects']);
         return view('admin.projects.show', compact('project'));
     }
 
@@ -62,19 +77,20 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::orderBy('name', 'asc')->get();
+        return view('admin.projects.edit', compact('project', 'types'));
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         //
-        $form_data = $request->all();
+        $form_data = $request->validated();
         $project->update($form_data);
-        return to_route('admin.project.show', $project);
+        return to_route('admin.projects.show', $project);
     }
 
     /**
@@ -84,6 +100,6 @@ class ProjectController extends Controller
     {
         //
         $project->delete();
-        return to_route('admin.project.index');
+        return to_route('admin.projects.index');
     }
 }
