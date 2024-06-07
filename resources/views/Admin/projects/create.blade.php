@@ -30,6 +30,12 @@
                 </select>
             </div>
 
+            {{-- <div class="container-input input-group mb-3">
+                <label class="input-group-text" for="slug" >slug momentaneo</label> --}}
+                {{-- @dd($projects) --}}
+                {{-- <input  class="form-control" type="slug" name="slug" id="slug" value="{{$projects->slug}}">
+            </div> --}}
+
 
             {{-- <div class="container-input input-group mb-3">
                 <label for="slug" class="input-group-text" >slug momentaneo</label>
@@ -38,5 +44,14 @@
             
             <button class="btn btn-success" >Crea</button>
         </form>
+        @if ($errors->any())
+          <div class="alert alert-danger mt-3">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
     </div>
 @endsection

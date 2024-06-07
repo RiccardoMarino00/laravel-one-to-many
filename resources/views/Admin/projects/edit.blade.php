@@ -20,6 +20,16 @@
     </div>
 
     <div class="container-input input-group mb-3">
+        <select name="type_id" id="type_id">
+            <option value="">Seleziona categiora</option>
+            @foreach ($types as $type)
+            <option @selected($type->id == old('type_id', $project->type_id)) value="{{$type->id}}">{{$type->name}}</option>
+                
+            @endforeach
+        </select>
+    </div>
+
+    <div class="container-input input-group mb-3">
         <label class="input-group-text" for="slug" >slug momentaneo</label>
         <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
     </div>
