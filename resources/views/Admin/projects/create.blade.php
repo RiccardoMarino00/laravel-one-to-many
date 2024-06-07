@@ -30,11 +30,11 @@
                 </select>
             </div>
 
-            {{-- <div class="container-input input-group mb-3">
-                <label class="input-group-text" for="slug" >slug momentaneo</label> --}}
+            <div class="container-input input-group mb-3">
+                <label class="input-group-text" for="slug" >slug momentaneo</label>
                 {{-- @dd($projects) --}}
-                {{-- <input  class="form-control" type="slug" name="slug" id="slug" value="{{$projects->slug}}">
-            </div> --}}
+                <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
+            </div>
 
 
             {{-- <div class="container-input input-group mb-3">

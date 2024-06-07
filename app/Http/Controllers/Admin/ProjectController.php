@@ -28,14 +28,13 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
         //
 
         $types = Type::orderBy('name', 'asc')->get();
-        $projects = Project::all();
 
-        return view('admin.projects.create', compact('types', 'projects'));
+        return view('admin.projects.create', compact('types', 'project'));
     }
 
     /**
