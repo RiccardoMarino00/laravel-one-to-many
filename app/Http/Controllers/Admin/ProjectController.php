@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         //
-        $projects = Project::with(['type', 'type.project'])->get();
+        $projects = Project::with(['type', 'type.projects'])->get();
         return view('projects.index', compact('projects'));
     }
 

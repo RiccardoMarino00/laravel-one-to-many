@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            TypesTableSeeder::class,
+            TypeSeeder::class,
             ProjectSeeder::class
 
         ]);

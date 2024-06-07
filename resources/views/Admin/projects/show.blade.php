@@ -9,6 +9,6 @@
     {{-- @dump($project->type) --}}
     <p>{{$project->type ? $project->type->name : 'Nessun tipo'}}</p>
     <a href="{{$project->link}}">{{$project->link}}</a>
-    <a class="dropdown-item" href="{{route('admin.project.index')}}">Back</a>
+    <a class="dropdown-item" href="{{route('admin.projects.index')}}">Back</a>
 </div>
 @endsection

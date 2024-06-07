@@ -18,6 +18,11 @@
         <label class="input-group-text" for="price" >Link</label>
         <input class="form-control" type="text" name="link" id="link" value="{{$project->link}}">
     </div>
+
+    <div class="container-input input-group mb-3">
+        <label class="input-group-text" for="slug" >slug momentaneo</label>
+        <input  class="form-control" type="slug" name="slug" id="slug" value="{{$project->slug}}">
+    </div>
     <a  href="{{route('admin.projects.index')}}">Back</a>
 
 
@@ -28,4 +33,13 @@
     @csrf
     <button>Elimina</button>
 </form> --}}
+@if ($errors->any())
+          <div class="alert alert-danger mt-3">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
 @endsection
